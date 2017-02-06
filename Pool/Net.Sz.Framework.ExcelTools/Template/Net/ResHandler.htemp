@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Sz.MMO.BaseServer;
+
+namespace Sz.MMO.SLG.DouDizhu.Handlers
+{
+
+    public class <%ClassName%>Handler : MessageHandler
+    {
+
+
+        public override void Run()
+        {
+            var resMessage = (<%Content%>)this.Message;
+        }
+
+    }
+}
