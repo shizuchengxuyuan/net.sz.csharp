@@ -1,4 +1,4 @@
-﻿using Net.Sz.Framework.Log;
+﻿using Net.Sz.Framework.Szlog;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -25,6 +25,7 @@ namespace Net.Sz.Framework.DB.Mysql
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class MysqlDbContext : DbContext
     {
+        private static SzLogger log = SzLogger.getLogger();
 
         //[System.ComponentModel.DataAnnotations.Key, System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public MysqlDbContext(string nameOrConnectionString)
@@ -47,13 +48,13 @@ namespace Net.Sz.Framework.DB.Mysql
         {
             try
             {
-                Logger.Info("开始创建数据库");
-                Logger.Info(this.Database.CreateIfNotExists() + "");
-                Logger.Info("创建数据库完成");
+                if (log.IsInfoEnabled()) log.Info("开始创建数据库");
+                if (log.IsInfoEnabled()) log.Info(this.Database.CreateIfNotExists() + "");
+                if (log.IsInfoEnabled()) log.Info("创建数据库完成");
             }
             catch (Exception ex)
             {
-                Logger.Error("创建数据库失败" + ex);
+                if (log.IsErrorEnabled()) log.Error("创建数据库失败" + ex);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using Net.Sz.Framework.Log;
+﻿using Net.Sz.Framework.Szlog;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +23,9 @@ namespace Net.Sz.Framework.DB.Mssql
     /// </summary>
     public class MssqlDbContext : DbContext
     {
+
+        private static SzLogger log = SzLogger.getLogger();
+
         public MssqlDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
@@ -40,13 +43,13 @@ namespace Net.Sz.Framework.DB.Mssql
         {
             try
             {
-                Logger.Info("开始创建数据库");
-                Logger.Info(this.Database.CreateIfNotExists() + "");
-                Logger.Info("创建数据库完成");
+                log.Info("开始创建数据库");
+                log.Info(this.Database.CreateIfNotExists() + "");
+                log.Info("创建数据库完成");
             }
             catch (Exception ex)
             {
-                Logger.Error("创建数据库失败" + ex);
+                log.Error("创建数据库失败" + ex);
             }
         }
     }

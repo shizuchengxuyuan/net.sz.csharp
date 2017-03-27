@@ -82,6 +82,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Net.Sz.Framework.Szlog\Net.Sz.Framework.Szlog.csproj">
+      <Project>{f8e79a43-c822-490e-ae37-fbe08912feee}</Project>
+      <Name>Net.Sz.Framework.Szlog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Net.Sz.Framework\Net.Sz.Framework.csproj">
       <Project>{c43858ce-aeb1-497a-ab38-1e42185db678}</Project>
       <Name>Net.Sz.Framework</Name>
