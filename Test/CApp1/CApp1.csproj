@@ -72,6 +72,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.Netty\Net.Sz.Framework.Netty.csproj">
+      <Project>{455d35a3-6cf9-48bd-a4f4-7d0e69454a1d}</Project>
+      <Name>Net.Sz.Framework.Netty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.Szlog\Net.Sz.Framework.Szlog.csproj">
+      <Project>{f8e79a43-c822-490e-ae37-fbe08912feee}</Project>
+      <Name>Net.Sz.Framework.Szlog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.SzThreading\Net.Sz.Framework.SzThreading.csproj">
+      <Project>{892bed86-5ea4-45d0-a2fd-30a39bbd3698}</Project>
+      <Name>Net.Sz.Framework.SzThreading</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Pool\Net.Sz.Framework\Net.Sz.Framework.csproj">
       <Project>{c43858ce-aeb1-497a-ab38-1e42185db678}</Project>
       <Name>Net.Sz.Framework</Name>
