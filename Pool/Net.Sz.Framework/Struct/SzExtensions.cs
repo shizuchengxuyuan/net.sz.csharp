@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Sz.Framework.Utils;
+using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -18,31 +19,11 @@ namespace Net.Sz
     public static class SzExtensions
     {
 
-        private static int id = 0;
-        /// <summary>
-        /// 
-        /// </summary>
-        public static int ServerID = 1;
+        static LongId0Util ids = new LongId0Util();
 
-
-        private static String newformatter = "";
-        /// <summary>
-        /// 年月日时分服务器id和自增id组合的19位id
-        /// </summary>
-        /// <returns></returns>
-        public static long GetId()
+        static public long GetId()
         {
-            lock (typeof(string))
-            {
-                string datekey = DateTime.Now.ToString("yMMddHHmm");
-                if (!newformatter.Equals(datekey))
-                {
-                    newformatter = datekey;
-                    id = 0;
-                }
-                id += 1;
-                return Convert.ToInt64(DateTime.Now.ToString("yMMddHHmm") + ServerID.ToString().PadLeft(4, '0') + id.ToString().PadLeft(6, '0'));
-            }
+            return ids.GetId();
         }
 
         /// <summary>

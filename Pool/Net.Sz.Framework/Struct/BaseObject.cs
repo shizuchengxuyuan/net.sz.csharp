@@ -28,24 +28,29 @@ namespace Net.Sz
         /// 这个是不会被序列化的字段
         /// </summary>
         [System.Xml.Serialization.XmlIgnore]
-        public ObjectAttribute TmpOther { get; set; }
 
-        public BaseObject()
-            : this(SzExtensions.GetGUID())
+        private ObjectAttribute _TmpOther;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ObjectAttribute TmpOther
         {
-
+            get
+            {
+                /*未考虑并发*/
+                if (_TmpOther == null) _TmpOther = new ObjectAttribute();
+                return _TmpOther;
+            }
+            set { this._TmpOther = value; }
         }
+
+        public BaseObject() : this(SzExtensions.GetGUID()) { }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public BaseObject(long id)
-        {
-
-            this.ID = id;
-            TmpOther = new ObjectAttribute();
-
-        }
+        public BaseObject(long id) { this.ID = id; }
     }
 }
