@@ -1,4 +1,4 @@
-﻿using Net.Sz.Framework.Log;
+﻿using Net.Sz.Framework.Szlog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -16,6 +16,8 @@ namespace Net.Sz.Framework.ORMDB
     /// </summary>
     public class SqliteImpl : Net.Sz.Framework.ORMDB.ISqlImpl 
     {
+        private static SzLogger log = SzLogger.getLogger();
+
         /// <summary>
         /// 存储所有类型解析
         /// </summary>
@@ -133,7 +135,7 @@ namespace Net.Sz.Framework.ORMDB
                 if (!propertyInfo.CanRead
                     || !propertyInfo.CanWrite)
                 {
-                    Log.Logger.Error("类：" + oClass.FullName + " 字段：" + propertyInfo.Name + " is transient or static or final;");
+                    if (log.IsErrorEnabled()) log.Error("类：" + oClass.FullName + " 字段：" + propertyInfo.Name + " is transient or static or final;");
                     continue;
                 }
                 object[] columnDBs = propertyInfo.GetCustomAttributes(typeof(ColumnAttribute), false);
@@ -494,7 +496,7 @@ namespace Net.Sz.Framework.ORMDB
         {
             if (!clazz.IsClass)
             {
-                Log.Logger.Error(clazz.Name + " 类无法识别实体模型", new Exception());
+                if (log.IsErrorEnabled()) log.Error(clazz.Name + " 类无法识别实体模型", new Exception());
                 return;
             }
             DBCache dbCache = this.GetProperty(clazz);
@@ -535,14 +537,14 @@ namespace Net.Sz.Framework.ORMDB
                         int execute1 = this.ExecuteQuery(con, sqls);
                         if (ShowSql)
                         {
-                            Log.Logger.Error("执行语句：" + sqls + " 执行结果：" + execute1);
+                            if (log.IsErrorEnabled()) log.Error("执行语句：" + sqls + " 执行结果：" + execute1);
                         }
                     }
                     else
                     {
                         if (ShowSql)
                         {
-                            Log.Logger.Error("表：" + cache.TableName + " 字段：" + item.Name + " 映射数据库字段：" + item.ColumnName + " 存在，将不会修改，");
+                            if (log.IsErrorEnabled()) log.Error("表：" + cache.TableName + " 字段：" + item.Name + " 映射数据库字段：" + item.ColumnName + " 存在，将不会修改，");
                         }
                         /*   String sqls = "ALTER TABLE " + tableName + " CHANGE `" + key + "` " + value.getValue() + ";";
                                     if (showSql) {
@@ -577,14 +579,14 @@ namespace Net.Sz.Framework.ORMDB
                 {
                     if (ShowSql)
                     {
-                        Logger.Error(createsql);
+                        if (log.IsErrorEnabled()) log.Error(createsql);
                     }
                     this.ExecuteQuery(con, createsql);
-                    Logger.Info("创建表：" + cache.TableName + " 完成");
+                    if (log.IsInfoEnabled()) log.Info("创建表：" + cache.TableName + " 完成");
                 }
                 catch (Exception e)
                 {
-                    Logger.Error("创建表：" + cache.TableName + " 错误：" + createsql, e);
+                    if (log.IsErrorEnabled()) log.Error("创建表：" + cache.TableName + " 错误：" + createsql, e);
                     throw e;
                 }
             }
@@ -655,7 +657,7 @@ namespace Net.Sz.Framework.ORMDB
             {
                 if (ShowSql)
                 {
-                    Log.Logger.Error("表：" + tableName + " 检查结果：已存在");
+                    if (log.IsErrorEnabled()) log.Error("表：" + tableName + " 检查结果：已存在");
                 }
                 if (dbCache != null && dbCache.Columns.Count > 0)
                 {
@@ -666,7 +668,7 @@ namespace Net.Sz.Framework.ORMDB
                 }
                 return true;
             }
-            Log.Logger.Error("表：" + tableName + " 检查结果：无此表");
+            if (log.IsErrorEnabled()) log.Error("表：" + tableName + " 检查结果：无此表");
             return false;
         }
 
@@ -698,7 +700,7 @@ namespace Net.Sz.Framework.ORMDB
             {
                 if (ShowSql)
                 {
-                    Log.Logger.Error("数据库：" + dbName + " 表：" + tableName + " 映射数据库字段：" + columnName + " 检查结果：已存在，将不会修改");
+                    if (log.IsErrorEnabled()) log.Error("数据库：" + dbName + " 表：" + tableName + " 映射数据库字段：" + columnName + " 检查结果：已存在，将不会修改");
                 }
                 return true;
             }
@@ -706,7 +708,7 @@ namespace Net.Sz.Framework.ORMDB
             {
                 if (ShowSql)
                 {
-                    Log.Logger.Error("数据库：" + dbName + " 表：" + tableName + " 映射数据库字段：" + columnName + " 检查结果：无此字段 ");
+                    if (log.IsErrorEnabled()) log.Error("数据库：" + dbName + " 表：" + tableName + " 映射数据库字段：" + columnName + " 检查结果：无此字段 ");
                 }
                 return false;
             }
@@ -934,7 +936,7 @@ namespace Net.Sz.Framework.ORMDB
                     String sqlString = builder.ToString();
                     if (ShowSql)
                     {
-                        Log.Logger.Error("执行 " + sqlString + " 添加数据 表：" + tableName);
+                        if (log.IsErrorEnabled()) log.Error("执行 " + sqlString + " 添加数据 表：" + tableName);
                     }
                     //指定DataAdapter的Insert语句  
                     try
@@ -966,13 +968,13 @@ namespace Net.Sz.Framework.ORMDB
 
                             if (ShowSql)
                             {
-                                Log.Logger.Error("执行 " + cmd.ToString() + " 添加数据 表：" + tableName + " 结果 影响行数：" + execute);
+                                if (log.IsErrorEnabled()) log.Error("执行 " + cmd.ToString() + " 添加数据 表：" + tableName + " 结果 影响行数：" + execute);
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        Log.Logger.Error("执行sql语句错误：" + sqlString);
+                        if (log.IsErrorEnabled()) log.Error("执行sql语句错误：" + sqlString);
                         throw ex;
                     }
                 }
@@ -1190,7 +1192,7 @@ namespace Net.Sz.Framework.ORMDB
                     SetStmtParams(cmd.Parameters, objs);
                     if (ShowSql)
                     {
-                        Log.Logger.Error("执行sql语句：" + cmd.CommandText);
+                        if (log.IsErrorEnabled()) log.Error("执行sql语句：" + cmd.CommandText);
                     }
                     using (System.Data.SQLite.SQLiteDataAdapter da = new System.Data.SQLite.SQLiteDataAdapter(cmd))
                     {
@@ -1200,7 +1202,7 @@ namespace Net.Sz.Framework.ORMDB
             }
             catch (Exception ex)
             {
-                Log.Logger.Error("执行sql语句错误：" + sqlString);
+                if (log.IsErrorEnabled()) log.Error("执行sql语句错误：" + sqlString);
                 throw ex;
             }
             return res;
@@ -1272,7 +1274,7 @@ namespace Net.Sz.Framework.ORMDB
             }
             if (ShowSql)
             {
-                Log.Logger.Error("执行：" + sqlString + " 影响行数：" + objects.Count);
+                if (log.IsErrorEnabled()) log.Error("执行：" + sqlString + " 影响行数：" + objects.Count);
             }
             return objects;
         }
@@ -1573,7 +1575,7 @@ namespace Net.Sz.Framework.ORMDB
             }
             catch (Exception e)
             {
-                Log.Logger.Error("加载表：" + tableName + " 字段：" + columnName + " 字段类型：" + toLowerCase + " 数据库配置值：" + obj, e);
+                if (log.IsErrorEnabled()) log.Error("加载表：" + tableName + " 字段：" + columnName + " 字段类型：" + toLowerCase + " 数据库配置值：" + obj, e);
             }
             return obj;
         }
@@ -1713,7 +1715,7 @@ namespace Net.Sz.Framework.ORMDB
                 }
                 if (ShowSql)
                 {
-                    Log.Logger.Error(updateSql);
+                    if (log.IsErrorEnabled()) log.Error(updateSql);
                 }
                 try
                 {
@@ -1741,7 +1743,7 @@ namespace Net.Sz.Framework.ORMDB
 
                         if (ShowSql)
                         {
-                            Log.Logger.Error(cmd.ToString() + " 执行结果：" + executeUpdate);
+                            if (log.IsErrorEnabled()) log.Error(cmd.ToString() + " 执行结果：" + executeUpdate);
                         }
 
                         executeUpdate += exec;
@@ -1750,7 +1752,7 @@ namespace Net.Sz.Framework.ORMDB
                 }
                 catch (Exception ex)
                 {
-                    Log.Logger.Error("执行sql语句错误：" + updateSql, ex);
+                    if (log.IsErrorEnabled()) log.Error("执行sql语句错误：" + updateSql, ex);
                     throw ex;
                 }
             }
@@ -1794,14 +1796,14 @@ namespace Net.Sz.Framework.ORMDB
 
                     if (ShowSql)
                     {
-                        Log.Logger.Error(cmd.ToString() + " 执行结果：" + executeUpdate);
+                        if (log.IsErrorEnabled()) log.Error(cmd.ToString() + " 执行结果：" + executeUpdate);
                     }
                     return executeUpdate;
                 }
             }
             catch (Exception ex)
             {
-                Log.Logger.Error("执行sql语句错误：" + sql, ex);
+                if (log.IsErrorEnabled()) log.Error("执行sql语句错误：" + sql, ex);
                 throw ex;
             }
         }
