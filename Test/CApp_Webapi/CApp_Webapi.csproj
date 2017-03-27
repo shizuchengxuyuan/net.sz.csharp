@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FEA19C9-8AC0-4759-BC6F-FA187EF69BB6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CApp_Webapi</RootNamespace>
+    <AssemblyName>CApp_Webapi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.Netty\Net.Sz.Framework.Netty.csproj">
+      <Project>{455d35a3-6cf9-48bd-a4f4-7d0e69454a1d}</Project>
+      <Name>Net.Sz.Framework.Netty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.Script\Net.Sz.Framework.Script.csproj">
+      <Project>{213098cb-aee2-4931-b467-340a2069c5f7}</Project>
+      <Name>Net.Sz.Framework.Script</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.Szlog\Net.Sz.Framework.Szlog.csproj">
+      <Project>{f8e79a43-c822-490e-ae37-fbe08912feee}</Project>
+      <Name>Net.Sz.Framework.Szlog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework.SzThreading\Net.Sz.Framework.SzThreading.csproj">
+      <Project>{892bed86-5ea4-45d0-a2fd-30a39bbd3698}</Project>
+      <Name>Net.Sz.Framework.SzThreading</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pool\Net.Sz.Framework\Net.Sz.Framework.csproj">
+      <Project>{c43858ce-aeb1-497a-ab38-1e42185db678}</Project>
+      <Name>Net.Sz.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
