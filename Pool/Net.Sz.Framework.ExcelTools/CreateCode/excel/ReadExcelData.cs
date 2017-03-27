@@ -370,9 +370,9 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel
                         }
                     }
                 }
-                catch (IOException)
+                catch (Exception)
                 {
-                    show("请关闭文件：" + Path.GetFileName(excelPath));
+                    show("请确保是2003或者wps创建的excel文件并且处于关闭状态：" + Path.GetFileName(excelPath));
                     return false;
                 }
             }

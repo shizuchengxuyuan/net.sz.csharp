@@ -1,5 +1,5 @@
 ﻿using Microsoft.CSharp;
-using Net.Sz.Framework.Log;
+using Net.Sz.Framework.Szlog;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Concurrent;
@@ -25,6 +25,8 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
     [global::System.Serializable, global::ProtoBuf.ProtoContract(Name = @"Login")]
     public class LoadProtoMessage : global::ProtoBuf.IExtensible
     {
+
+        private static SzLogger log = SzLogger.getLogger();
 
         private static LoadProtoMessage instance = new LoadProtoMessage();
         /// <summary>
@@ -98,11 +100,9 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
             {
                 try
                 {
-                    Logger.Info("加载DLL：" + item);
+                    if (log.IsInfoEnabled()) log.Info("加载DLL：" + item);
                 }
-                catch (Exception)
-                {
-                }
+                catch { }
             }
 
             CSharpCodeProvider provider = new CSharpCodeProvider();
@@ -121,7 +121,7 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
                 var item = result.Errors.GetEnumerator();
                 while (item.MoveNext())
                 {
-                    Logger.Error("动态加载文件出错了！" + item.Current.ToString());
+                    if (log.IsErrorEnabled()) log.Error("动态加载文件出错了！" + item.Current.ToString());
                 }
             }
             else
@@ -172,7 +172,7 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error("根据类型模拟生成处理handler", ex);
+                    if (log.IsErrorEnabled()) log.Error("根据类型模拟生成处理handler", ex);
                 }
             }
         }
@@ -195,11 +195,11 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
                     {
                         fileNames.Add(path);
                         //编译文件
-                        Logger.Info("动态加载文件：" + path);
+                        if (log.IsInfoEnabled()) log.Info("动态加载文件：" + path);
                     }
                     else
                     {
-                        Logger.Info("动态加载文件 无法找到文件：" + path);
+                        if (log.IsInfoEnabled()) log.Info("动态加载文件 无法找到文件：" + path);
                     }
                 }
                 else
@@ -221,7 +221,7 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
         {
             if (!Directory.Exists(sourceDirectory))
             {
-                Logger.Error("动态加载文件", new Exception("目录 " + sourceDirectory + " 未能找到需要加载的脚本文件"));
+                if (log.IsErrorEnabled()) log.Error("动态加载文件", new Exception("目录 " + sourceDirectory + " 未能找到需要加载的脚本文件"));
                 return;
             }
             {
@@ -239,7 +239,7 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.protobuf
                     }
                     else
                     {
-                        Logger.Info("动态加载 无法找到文件：" + path);
+                        if (log.IsInfoEnabled()) log.Info("动态加载 无法找到文件：" + path);
                     }
                 }
             }
