@@ -18,6 +18,11 @@ namespace Net.Sz.Framework.SzThreading
     /// <summary>
     /// 线程池
     /// <para>程序启动完成请将 StartEnd=true，否则定时器任务是不会执行的</para>
+    /// <para>PS:</para>
+    /// <para>@author 失足程序员</para>
+    /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+    /// <para>@mail 492794628@qq.com</para>
+    /// <para>@phone 13882122019</para>
     /// </summary>
     public class ThreadPool
     {

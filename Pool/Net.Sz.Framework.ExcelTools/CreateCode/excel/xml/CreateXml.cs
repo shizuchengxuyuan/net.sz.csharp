@@ -8,6 +8,14 @@ using System.Text;
 
 namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.xml
 {
+    /// <summary>
+    ///
+    /// <para>PS:</para>
+    /// <para>@author 失足程序员</para>
+    /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+    /// <para>@mail 492794628@qq.com</para>
+    /// <para>@phone 13882122019</para>
+    /// </summary>
     public class CreateXml : CreateBase
     {
         static readonly CreateXml instance = new CreateXml();
@@ -109,9 +117,10 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.xml
 
             notesBuilder.AppendLine()
                 .AppendLine("<!-- * @Create Code Troy.Chen -->")
+                .AppendLine("<!-- * @Blog http://www.cnblogs.com/ty408/</para> -->")
                 .AppendLine("<!-- * @Phone 13882122019 -->")
                 .AppendLine("<!-- * @email 492794628@qq.com -->")
-                .AppendLine("<!-- * " + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss") + " -->"));
+                .AppendLine("<!-- * @Create Time " + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss") + " -->"));
             var rows = file.Rows.Values.ToArray();
             notesBuilder.AppendLine();
             notesBuilder.AppendLine("<!-- " + file.SheetName + " -->");

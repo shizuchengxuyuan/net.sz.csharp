@@ -21,6 +21,12 @@ namespace Net.Sz.Framework.Szlog
 
     /// <summary>
     /// 日志辅助
+    ///
+    /// <para>PS:</para>
+    /// <para>@author 失足程序员</para>
+    /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+    /// <para>@mail 492794628@qq.com</para>
+    /// <para>@phone 13882122019</para>
     /// <para>默认是不打印栈桢的，因为比较耗时：如果需要请设置 LOGSTACKTRACE = true 或者 ↓↓↓</para>
     /// <para>AppSettings 设置 log_print_stackrace         日志是否输出调用栈桢 true or false</para>
     /// <para>AppSettings 设置 log_print_console           日志是否输出到控制台 true or false</para>

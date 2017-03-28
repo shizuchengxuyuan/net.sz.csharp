@@ -19,6 +19,11 @@ namespace Net.Sz.Framework.Utils
     /// <para>分1000组（0-999），分别计算id,</para>
     /// <para>启动程序后，重复周期是 10 年,</para>
     /// <para>上一次启动和下一次启动之间重启周期是1分钟</para>
+    /// <para>PS:</para>
+    /// <para>@author 失足程序员</para>
+    /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+    /// <para>@mail 492794628@qq.com</para>
+    /// <para>@phone 13882122019</para>
     /// </summary>
     public class LongId3Util
     {

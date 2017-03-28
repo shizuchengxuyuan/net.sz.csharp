@@ -12,7 +12,12 @@ namespace Net.Sz.Framework.SzThreading
         Action<TimerTaskModel> ARun;
 
         /// <summary>
-        /// 
+        ///
+        /// <para>PS:</para>
+        /// <para>@author 失足程序员</para>
+        /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+        /// <para>@mail 492794628@qq.com</para>
+        /// <para>@phone 13882122019</para>
         /// </summary>
         /// <param name="startTime">指定开始时间 0 没有开始时间</param>
         /// <param name="isStartAction">提交立即执行一次</param>

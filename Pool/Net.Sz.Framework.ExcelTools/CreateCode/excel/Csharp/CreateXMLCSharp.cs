@@ -7,6 +7,11 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.Csharp
 {
     /// <summary>
     /// 生成读取XML的CSharp代码
+    /// <para>PS:</para>
+    /// <para>@author 失足程序员</para>
+    /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+    /// <para>@mail 492794628@qq.com</para>
+    /// <para>@phone 13882122019</para>
     /// </summary>
     public class CreateXMLCSharp : CreateBase
     {
@@ -56,13 +61,12 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.Csharp
                     .AppendLine()
                     .AppendLine(strspce + "/// <summary> ")
                     .AppendLine(strspce + "/// Excel Data To Xml CSharp Class ")
-                    .AppendLine(strspce + "/// <pre></pre>")
-                    .AppendLine(strspce + "/// <pre>@Create Code Troy.Chen</pre>")
-                    .AppendLine(strspce + "/// <pre>@Phone 13882122019</pre>")
-                    .AppendLine(strspce + "/// <pre>@email 492794628@qq.com</pre>")
-                    .AppendLine(strspce + "/// <pre></pre>")
-                    .AppendLine(strspce + "/// <pre>" + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss")) + "</pre>")
-                    .AppendLine(strspce + "/// <pre></pre>")
+                    .AppendLine(strspce + "/// <para>PS:</para>")
+                    .AppendLine(strspce + "/// <para>@author 失足程序员</para>")
+                    .AppendLine(strspce + "/// <para>@Blog http://www.cnblogs.com/ty408/</para>")
+                    .AppendLine(strspce + "/// <para>@mail 492794628@qq.com</para>")
+                    .AppendLine(strspce + "/// <para>@phone 13882122019</para>")
+                    .AppendLine(strspce + "/// <para> @Create Time " + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss")) + "</para>")
                     .AppendLine(strspce + "/// </summary>")
                     .AppendLine(strspce + "[XmlRootAttribute(\"" + sheetName + "Manager" + "\")]")
                     .AppendLine(strspce + "public class Q" + sheetName.Replace("q_", "") + "Manager")

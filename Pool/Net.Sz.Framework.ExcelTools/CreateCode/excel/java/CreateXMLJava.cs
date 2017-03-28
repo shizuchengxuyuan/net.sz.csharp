@@ -5,6 +5,14 @@ using System.Text;
 
 namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.java
 {
+    /// <summary>
+    ///
+    /// <para>PS:</para>
+    /// <para>@author 失足程序员</para>
+    /// <para>@Blog http://www.cnblogs.com/ty408/</para>
+    /// <para>@mail 492794628@qq.com</para>
+    /// <para>@phone 13882122019</para>
+    /// </summary>
     public class CreateXMLJava : CreateBase
     {
         static readonly CreateXMLJava instance = new CreateXMLJava();
@@ -41,10 +49,11 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.java
                          .AppendLine("/* ")
                          .AppendLine("* Data Source To java Class ")
                          .AppendLine("* ")
-                         .AppendLine("* @Create Code Troy.Chen")
-                         .AppendLine("* @Phone 13882122019")
-                         .AppendLine("* @email 492794628@qq.com")
-                         .AppendLine("*  " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss"))
+                         .AppendLine("* Create Code：失足程序员<br>")
+                         .AppendLine("* blog http://www.cnblogs.com/ty408/<br>")
+                         .AppendLine("* Create Time：" + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss")) + "<br>")
+                         .AppendLine("* Phone：13882122019<br>")
+                         .AppendLine("* email：492794628@qq.com<br>")
                          .AppendLine("* ")
                          .AppendLine("*/")
                          .AppendLine("@XmlRootElement")
@@ -52,9 +61,9 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.java
                          .AppendLine("{");
 
         }
-        string CreateCode(Dictionary<string, ExcelDatas> datas, ExcelDatas model, string strnamespace, Action<string> show, string strspce = "      ", bool isCreatenamespace = true) 
+        string CreateCode(Dictionary<string, ExcelDatas> datas, ExcelDatas model, string strnamespace, Action<string> show, string strspce = "      ", bool isCreatenamespace = true)
         {
-            
+
             StringBuilder javaBuilder = new StringBuilder();
             string sheetName = model.SheetName;
             if (isCreatenamespace)

@@ -51,6 +51,7 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.Csharp
             builderDB.AppendLine("    /// <para>@Blog http://www.cnblogs.com/ty408/</para>");
             builderDB.AppendLine("    /// <para>@mail 492794628@qq.com</para>");
             builderDB.AppendLine("    /// <para>@phone 13882122019</para>");
+            builderDB.AppendLine("    /// <para> @Create Time " + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss")) + "</para>");
             builderDB.AppendLine("    /// </summary>");
             builderDB.AppendLine("    public class Gamesr_Data : Net.Sz.Framework.DB.Mysql.MysqlDbContext");
             builderDB.AppendLine("    {");

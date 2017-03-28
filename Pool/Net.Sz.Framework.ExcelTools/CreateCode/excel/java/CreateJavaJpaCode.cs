@@ -68,6 +68,7 @@ namespace Net.Sz.Framework.ExcelTools.CreateCode.excel.java
                 .AppendLine("* <br>")
                 .AppendLine("* Excel Data To Java Jpa C3P0 Class<br>")
                 .AppendLine("* Create Code：失足程序员<br>")
+                .AppendLine("* blog http://www.cnblogs.com/ty408/<br>")
                 .AppendLine("* Create Time：" + (DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:sss")) + "<br>")
                 .AppendLine("* Phone：13882122019<br>")
                 .AppendLine("* email：492794628@qq.com<br>")
